@@ -19,7 +19,8 @@
   function addUserImageAndName($user, $user_json){
 
     $github_page = file_get_contents('https://github.com/'.$user->username);
-
+    $github_page = mb_convert_encoding($github_page, 'HTML-ENTITIES', "UTF-8");
+    
     $doc = new DOMDocument();
     libxml_use_internal_errors(true);
     $doc->loadHTML($github_page);
