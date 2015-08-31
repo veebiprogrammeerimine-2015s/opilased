@@ -8,7 +8,7 @@
   foreach ($scanned_directory as $user_json) {
     $string = file_get_contents("./_data/".$user_json);
     $user = json_decode($string);
-    $username = chop($user_json,".json!");
+    $username = substr($user_json, 0, -5);
     $user->username = $username;
     $user = addUserImageAndName($user, $user_json);
     array_push($users, $user);
@@ -20,7 +20,7 @@
 
     $github_page = file_get_contents('https://github.com/'.$user->username);
     $github_page = mb_convert_encoding($github_page, 'HTML-ENTITIES', "UTF-8");
-    
+
     $doc = new DOMDocument();
     libxml_use_internal_errors(true);
     $doc->loadHTML($github_page);
