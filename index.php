@@ -13,7 +13,7 @@
     $user = addUserImageAndName($user, $user_json);
     array_push($users, $user);
   }
-
+  
   //var_dump($users);
 
   function addUserImageAndName($user, $user_json){
